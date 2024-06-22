@@ -18,35 +18,39 @@ anticheat:
     enabled: false
     engine-mode: 1
     hidden-blocks:
+    - air
+    - chest
+    - coal_ore
+    - deepslate_coal_ore
     - copper_ore
     - deepslate_copper_ore
+    - raw_copper_block
+    - diamond_ore
+    - deepslate_diamond_ore
+    - emerald_ore
+    - deepslate_emerald_ore
     - gold_ore
     - deepslate_gold_ore
     - iron_ore
     - deepslate_iron_ore
-    - coal_ore
-    - deepslate_coal_ore
+    - raw_iron_block
     - lapis_ore
     - deepslate_lapis_ore
-    - mossy_cobblestone
-    - obsidian
-    - chest
-    - diamond_ore
-    - deepslate_diamond_ore
     - redstone_ore
     - deepslate_redstone_ore
-    - clay
-    - emerald_ore
-    - deepslate_emerald_ore
-    - ender_chest
+    - ancient_debris
+    - bone_block
+    - glowstone
+    - magma_block
+    - nether_bricks
+    - nether_gold_ore
+    - nether_quartz_ore
+    - polished_blackstone_bricks
     lava-obscures: false
-    max-block-height: 64
-    replacement-blocks:
-    - stone
-    - oak_planks
-    - deepslate
+    max-block-height: 128
+    replacement-blocks: []
     update-radius: 2
-    use-permission: false
+    use-permission: true
   obfuscation:
     items:
       hide-durability: false
@@ -56,12 +60,24 @@ chunks:
   auto-save-interval: default
   delay-chunk-unloads-by: 10s
   entity-per-chunk-save-limit:
-    arrow: -1
-    ender_pearl: -1
-    experience_orb: -1
-    fireball: -1
-    small_fireball: -1
-    snowball: -1
+    area_effect_cloud: 8
+    arrow: 16
+    dragon_fireball: 3
+    egg: 8
+    ender_pearl: 8
+    experience_bottle: 3
+    experience_orb: 16
+    eye_of_ender: 8
+    fireball: 8
+    firework_rocket: 8
+    llama_spit: 3
+    potion: 8
+    shulker_bullet: 8
+    small_fireball: 8
+    snowball: 8
+    spectral_arrow: 16
+    trident: 16
+    wither_skull: 4
   fixed-chunk-inhabited-time: -1
   flush-regions-on-save: false
   max-auto-save-chunks-per-tick: 8
@@ -70,12 +86,12 @@ collisions:
   allow-player-cramming-damage: false
   allow-vehicle-collisions: true
   fix-climbing-bypassing-cramming-rule: true
-  max-entity-collisions: 8
+  max-entity-collisions: 2
   only-players-collide: false
 entities:
   armor-stands:
-    do-collision-entity-lookups: true
-    tick: true
+    do-collision-entity-lookups: false
+    tick: false
   behavior:
     allow-spider-world-border-climbing: true
     baby-zombie-movement-modifier: 0.5
@@ -135,35 +151,60 @@ entities:
   spawning:
     all-chunks-are-slime-chunks: false
     alt-item-despawn-rate:
-      enabled: false
+      enabled: true
       items:
         cobblestone: 300
+        netherrack: 300
+        sand: 300
+        red_sand: 300
+        gravel: 300
+        dirt: 300
+        short_grass: 300
+        pumpkin: 300
+        melon_slice: 300
+        kelp: 300
+        bamboo: 300
+        sugar_cane: 300
+        twisting_vines: 300
+        weeping_vines: 300
+        oak_leaves: 300
+        spruce_leaves: 300
+        birch_leaves: 300
+        jungle_leaves: 300
+        acacia_leaves: 300
+        dark_oak_leaves: 300
+        mangrove_leaves: 300
+        cactus: 300
+        diorite: 300
+        granite: 300
+        andesite: 300
+        scaffolding: 600
     count-all-mobs-for-spawning: false
     creative-arrow-despawn-rate: default
     despawn-ranges:
-      ambient:
-        hard: 128
+            ambient:
+        hard: 72
         soft: 32
       axolotls:
-        hard: 128
+        hard: 72
         soft: 32
       creature:
-        hard: 128
+        hard: 72
         soft: 32
       misc:
-        hard: 128
+        hard: 72
         soft: 32
       monster:
-        hard: 128
+        hard: 72
         soft: 32
       underground_water_creature:
-        hard: 128
+        hard: 72
         soft: 32
       water_ambient:
-        hard: 64
+        hard: 72
         soft: 32
       water_creature:
-        hard: 128
+        hard: 72
         soft: 32
     disable-mob-spawner-spawn-egg-transformation: false
     duplicate-uuid:
@@ -231,10 +272,10 @@ environment:
   portal-search-radius: 128
   portal-search-vanilla-dimension-scaling: true
   treasure-maps:
-    enabled: false
+    enabled: true
     find-already-discovered:
-      loot-tables: default
-      villager-trade: false
+      loot-tables: true
+      villager-trade: true
   water-over-lava-flow-speed: 5
 feature-seeds:
   generate-random-seeds-for-all: false
@@ -253,7 +294,6 @@ hopper:
   cooldown-when-full: true
   disable-move-event: false
   ignore-occluding-blocks: false
-lootables:
   auto-replenish: false
   max-refills: -1
   refresh-max: 2d
@@ -292,8 +332,8 @@ tick-rates:
     villager:
       validatenearbypoi: -1
   container-update: 1
-  grass-spread: 1
-  mob-spawner: 1
+  grass-spread: 4
+  mob-spawner: 2
   sensor:
     villager:
       secondarypoisensor: 40
